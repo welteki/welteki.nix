@@ -12,6 +12,7 @@
 
     nixosModules = {
       common = import ./modules/common.nix;
+      welteki-users = import ./modules/welteki-users.nix;
     };
 
   } // utils.lib.eachDefaultSystem (system:
