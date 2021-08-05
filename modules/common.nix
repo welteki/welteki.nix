@@ -2,7 +2,7 @@
 
 {
   networking.firewall = {
-    allowPing = true;
+    allowPing = false;
     logRefusedConnections = false;
   };
 
