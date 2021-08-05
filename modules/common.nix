@@ -11,7 +11,7 @@
   nix.autoOptimiseStore = true;
 
   nix.extraOptions = ''
-    experimental-features = nix-command flakes
+    # experimental-features = nix-command flakes
   '';
 
   security.sudo.wheelNeedsPassword = false;
