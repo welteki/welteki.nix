@@ -10,6 +10,10 @@
 
   nix.autoOptimiseStore = true;
 
+  nix.requireSignedBinaryCaches = true;
+  nix.binaryCaches = [ "https://welteki.cachix.org" ];
+  nix.binaryCachePublicKeys = [ "welteki.cachix.org-1:zb0txiNEbjq9Fx7svp4LhTgFIQHKSa5ESi7QlLFjjQY=" ];
+
   nix.extraOptions = ''
     # experimental-features = nix-command flakes
   '';
