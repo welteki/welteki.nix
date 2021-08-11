@@ -6,6 +6,7 @@ in
 {
   users.users.welteki = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     openssh.authorizedKeys.keys = ssh-keys.welteki;
     extraGroups = [ "wheel" ];
   };
