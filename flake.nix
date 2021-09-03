@@ -9,6 +9,7 @@
   };
 
   outputs = { self, nixpkgs, utils, ... }@inputs: {
+    overlay = import ./overlay/default.nix inputs;
 
     nixosModules = {
       auto-fix-vscode-server = import ./modules/auto-fix-vscode-server.nix;
@@ -18,9 +19,16 @@
 
   } // utils.lib.eachDefaultSystem (system:
     let
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ self.overlay ];
+      };
     in
     {
+      packages = {
+        caddy = pkgs.caddy;
+      };
+
       devShell = pkgs.mkShell {
         buildInputs = [ pkgs.nixpkgs-fmt ];
       };
