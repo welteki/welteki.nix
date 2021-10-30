@@ -15,6 +15,7 @@
       auto-fix-vscode-server = import ./modules/auto-fix-vscode-server.nix;
       common = import ./modules/common.nix;
       welteki-users = import ./modules/welteki-users.nix;
+      hetzner-cloud = import ./modules/virtualization/hetzner-cloud.nix;
     };
 
   } // utils.lib.eachDefaultSystem (system:
