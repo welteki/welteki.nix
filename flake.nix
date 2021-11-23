@@ -13,12 +13,20 @@
   outputs = { self, nixpkgs, utils, ... }@inputs: {
     overlay = import ./overlay/default.nix inputs;
 
-    nixosModules = {
-      auto-fix-vscode-server = import ./modules/auto-fix-vscode-server.nix;
-      common = import ./modules/common.nix;
-      welteki-users = import ./modules/welteki-users.nix;
-      hetzner-cloud = import ./modules/virtualization/hetzner-cloud.nix;
-    };
+    nixosModules =
+      let
+        nixery-module = import ./modules/nixery.nix self;
+      in
+      {
+        auto-fix-vscode-server = import ./modules/auto-fix-vscode-server.nix;
+        common = import ./modules/common.nix;
+        welteki-users = import ./modules/welteki-users.nix;
+        hetzner-cloud = import ./modules/virtualization/hetzner-cloud.nix;
+        nixery = {
+          imports = [ nixery-module ];
+          nixpkgs.overlays = [ self.overlay ];
+        };
+      };
 
   } // utils.lib.eachDefaultSystem (system:
     let
@@ -31,6 +39,8 @@
       packages = {
         inherit (pkgs) caddy nixery;
       };
+
+      nixeryPackages = pkgs;
 
       devShell = pkgs.mkShell {
         buildInputs = [ pkgs.nixpkgs-fmt ];
