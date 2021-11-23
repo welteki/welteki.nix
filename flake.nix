@@ -6,6 +6,8 @@
     utils.url = "github:numtide/flake-utils";
     flake-compat.url = "github:edolstra/flake-compat";
     flake-compat.flake = false;
+    nixery.url = "github:tazjin/nixery";
+    nixery.flake = false;
   };
 
   outputs = { self, nixpkgs, utils, ... }@inputs: {
@@ -27,7 +29,7 @@
     in
     {
       packages = {
-        caddy = pkgs.caddy;
+        inherit (pkgs) caddy nixery;
       };
 
       devShell = pkgs.mkShell {

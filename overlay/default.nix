@@ -2,5 +2,8 @@ inputs:
 
 final: prev:
 {
-  caddy = import ./caddy/default.nix final;
+  inherit inputs;
+
+  caddy = import ./caddy final;
+  nixery = import ./nixery final;
 }

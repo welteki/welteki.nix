@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "nixery": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1635527907,
+        "narHash": "sha256-XsTpBZ/mHUktuiAqyx1X9w5FmrdYcTnZ5dzPdKkE76Y=",
+        "owner": "tazjin",
+        "repo": "nixery",
+        "rev": "d75aa1531302729b404cb5d3dc3bcccd93a68edd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tazjin",
+        "repo": "nixery",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1625692408,
@@ -34,6 +50,7 @@
     "root": {
       "inputs": {
         "flake-compat": "flake-compat",
+        "nixery": "nixery",
         "nixpkgs": "nixpkgs",
         "utils": "utils"
       }
