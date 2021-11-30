@@ -96,6 +96,8 @@
       };
     };
 
+    vim.enable = true;
+
     gh.enable = true;
     bat.enable = true;
     jq.enable = true;
@@ -104,5 +106,9 @@
       enableAliases = true;
     };
     lazygit.enable = true;
+  };
+
+  home.sessionVariables = {
+    EDITOR = "vim";
   };
 }
