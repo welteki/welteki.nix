@@ -31,6 +31,11 @@
 
           # Let Home Manager install and manage itself.
           programs.home-manager.enable = true;
+
+          home.packages = [
+            # Ensure at least bash v4 on macOS
+            pkgs.bash_4
+          ];
         };
 
       in
