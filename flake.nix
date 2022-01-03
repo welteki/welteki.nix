@@ -24,29 +24,6 @@
       home = import ./modules/home.nix;
     };
 
-    homeConfigurations.welteki =
-      let
-        configuration = { config, pkgs, lib, ... }: {
-          imports = [ self.nixosModules.home ];
-
-          # Let Home Manager install and manage itself.
-          programs.home-manager.enable = true;
-
-          home.packages = [
-            # Ensure at least bash v4 on macOS
-            pkgs.bash_4
-          ];
-        };
-
-      in
-      inputs.home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-darwin";
-        homeDirectory = "/Users/welteki";
-        username = "welteki";
-        stateVersion = "21.11";
-        inherit configuration;
-      };
-
   } // utils.lib.eachDefaultSystem (system:
     let
       pkgs = import nixpkgs {
@@ -55,6 +32,29 @@
       };
     in
     {
+      legacyPackages.homeConfigurations.welteki =
+        let
+          configuration = { config, pkgs, lib, ... }: {
+            imports = [ self.nixosModules.home ];
+
+            # Let Home Manager install and manage itself.
+            programs.home-manager.enable = true;
+
+            home.packages = [ ] ++ lib.optionals pkgs.stdenv.isDarwin [
+              # Ensure at least bash v4 on macOS
+              pkgs.bash_4
+            ];
+          };
+
+        in
+        inputs.home-manager.lib.homeManagerConfiguration {
+          inherit system pkgs;
+          homeDirectory = if pkgs.stdenv.isDarwin then "/Users/welteki" else "/home/welteki";
+          username = "welteki";
+          stateVersion = "21.11";
+          inherit configuration;
+        };
+
       packages = {
         inherit (pkgs) caddy nixery;
       };
