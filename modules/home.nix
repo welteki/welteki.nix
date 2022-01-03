@@ -98,7 +98,6 @@
 
     vim.enable = true;
 
-    gh.enable = true;
     bat.enable = true;
     jq.enable = true;
     exa = {
@@ -111,4 +110,10 @@
   home.sessionVariables = {
     EDITOR = "vim";
   };
+
+  home.packages = [
+    # Install gh but don't manage config
+    # Workaround until https://github.com/cli/cli/issues/4955 is fixed.
+    pkgs.gh
+  ];
 }
