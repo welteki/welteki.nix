@@ -56,7 +56,7 @@
         };
 
       packages = {
-        inherit (pkgs) caddy nixery;
+        inherit (pkgs) caddy nixery gh-login;
       };
 
       devShell = pkgs.mkShell {

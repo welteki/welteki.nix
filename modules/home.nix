@@ -33,6 +33,15 @@
       };
     };
 
+    gh = {
+      enable = true;
+      settings.aliases = {
+        login = "!${pkgs.gh-login}/bin/gh-login";
+      };
+
+      enableGitCredentialHelper = true;
+    };
+
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -57,6 +66,7 @@
       enable = true;
       nix-direnv.enable = true;
     };
+
 
     starship = {
       enable = true;
@@ -98,7 +108,6 @@
 
     vim.enable = true;
 
-    gh.enable = true;
     bat.enable = true;
     jq.enable = true;
     exa = {
