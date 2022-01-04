@@ -42,6 +42,8 @@
       enableGitCredentialHelper = true;
     };
 
+    tmux.enable = true;
+
     zsh = {
       enable = true;
       enableCompletion = true;
@@ -107,6 +109,7 @@
     };
 
     vim.enable = true;
+
 
     bat.enable = true;
     jq.enable = true;
