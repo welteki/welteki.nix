@@ -47,7 +47,7 @@
 
             home.packages = [ ] ++ lib.optionals pkgs.stdenv.isDarwin [
               # Ensure at least bash v4 on macOS
-              pkgs.bash_4
+              pkgs.bash
             ];
           };
 
