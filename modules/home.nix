@@ -1,4 +1,10 @@
 { config, pkgs, lib, ... }:
+let
+  aliases = {
+    g = "git";
+    lg = "lazygit";
+  };
+in
 {
   programs = {
     git = {
@@ -52,6 +58,7 @@
       enable = true;
       enableCompletion = true;
       enableAutosuggestions = true;
+      shellAliases = aliases;
       plugins = [
         {
           name = "zsh-syntax-highlighting";
@@ -66,7 +73,10 @@
       ];
     };
 
-    bash.enable = true;
+    bash = {
+      enable = true;
+      shellAliases = aliases;
+    };
 
     direnv = {
       enable = true;
