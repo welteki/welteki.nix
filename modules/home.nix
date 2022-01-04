@@ -42,7 +42,11 @@
       enableGitCredentialHelper = true;
     };
 
-    tmux.enable = true;
+    tmux = {
+      enable = true;
+      shortcut = "a";
+      baseIndex = 1;
+    };
 
     zsh = {
       enable = true;
