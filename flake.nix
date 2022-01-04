@@ -30,6 +30,11 @@
         inherit system;
         overlays = [ self.overlay ];
       };
+
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        overlays = [ self.overlay ];
+      };
     in
     {
       legacyPackages.homeConfigurations.welteki =
@@ -48,7 +53,8 @@
 
         in
         inputs.home-manager.lib.homeManagerConfiguration {
-          inherit system pkgs;
+          inherit system;
+          pkgs = pkgs-unstable;
           homeDirectory = if pkgs.stdenv.isDarwin then "/Users/welteki" else "/home/welteki";
           username = "welteki";
           stateVersion = "21.11";
