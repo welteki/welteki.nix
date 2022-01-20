@@ -7,14 +7,18 @@
     utils.url = "github:numtide/flake-utils";
     flake-compat.url = "github:edolstra/flake-compat";
     flake-compat.flake = false;
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     nixery.url = "github:tazjin/nixery";
     nixery.flake = false;
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, utils, ... }@inputs: {
     overlay = import ./overlay/default.nix inputs;
+
+    overlays.home = import ./overlay/home.nix;
 
     nixosModules = {
       auto-fix-vscode-server = import ./modules/auto-fix-vscode-server.nix;
@@ -23,7 +27,6 @@
       hetzner-cloud = import ./modules/virtualization/hetzner-cloud.nix;
       home = import ./modules/home.nix;
     };
-
   } // utils.lib.eachDefaultSystem (system:
     let
       pkgs = import nixpkgs {
@@ -31,9 +34,9 @@
         overlays = [ self.overlay ];
       };
 
-      pkgs-unstable = import nixpkgs-unstable {
+      pkgs-home = import nixpkgs-unstable {
         inherit system;
-        overlays = [ self.overlay ];
+        overlays = [ self.overlays.home ];
       };
     in
     {
@@ -54,7 +57,7 @@
         in
         inputs.home-manager.lib.homeManagerConfiguration {
           inherit system;
-          pkgs = pkgs-unstable;
+          pkgs = pkgs-home;
           homeDirectory = if pkgs.stdenv.isDarwin then "/Users/welteki" else "/home/welteki";
           username = "welteki";
           stateVersion = "21.11";
@@ -62,7 +65,8 @@
         };
 
       packages = {
-        inherit (pkgs) caddy nixery lazygit gh-login;
+        inherit (pkgs) caddy nixery;
+        inherit (pkgs-home) lazygit gh-login;
       };
 
       devShell = pkgs.mkShell {
