@@ -12,6 +12,8 @@ final: prev:
           rev = "v${version}";
           sha256 = "sha256-tawsBfHz6gq8va9YLtCwp9Ec8EWcvhdbYwdVtvvtJeY=";
         };
+
+        ldflags = old.ldflags ++ [ "-X main.version=${version}" ];
       });
     in
     final.writeShellScriptBin "lazygit" ''
