@@ -33,6 +33,9 @@ in
 
         # Thumbnails
         "._*"
+
+        # Lazygit config
+        "lg_config.yml"
       ];
       extraConfig = {
         init.defaultBranch = "main";

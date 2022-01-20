@@ -62,7 +62,7 @@
         };
 
       packages = {
-        inherit (pkgs) caddy nixery gh-login;
+        inherit (pkgs) caddy nixery lazygit gh-login;
       };
 
       devShell = pkgs.mkShell {

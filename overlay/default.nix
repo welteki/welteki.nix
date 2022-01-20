@@ -9,6 +9,28 @@ final: prev:
   caddy = import ./caddy final;
   nixery = import ./nixery final;
 
+  lazygit =
+    let
+      lazygit = prev.lazygit.overrideAttrs (old: rec {
+        pname = "lazygit";
+        version = "0.32.2";
+
+        src = final.fetchFromGitHub {
+          owner = "jesseduffield";
+          repo = pname;
+          rev = "v${version}";
+          sha256 = "sha256-tawsBfHz6gq8va9YLtCwp9Ec8EWcvhdbYwdVtvvtJeY=";
+        };
+      });
+    in
+    final.writeShellScriptBin "lazygit" ''
+      if [ -e ./lg_config.yml ]; then
+        ${lazygit}/bin/lazygit --use-config-file=$HOME/.config/lazygit/config.yml,./lg_config.yml $@
+      else
+        ${lazygit}/bin/lazygit $@
+      fi
+    '';
+
   # Workaround to make gh auth login work untill
   # https://github.com/cli/cli/issues/4955 is fixed
   gh-login = final.writeShellScriptBin "gh-login" ''
