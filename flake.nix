@@ -16,6 +16,8 @@
     nixery.url = "github:tazjin/nixery";
     nixery.flake = false;
 
+    vscode-server.url = "github:msteen/nixos-vscode-server";
+    vscode-server.flake = false;
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, utils, deploy-rs, ... }@inputs: {
@@ -24,7 +26,7 @@
     overlays.home = import ./overlay/home.nix;
 
     nixosModules = {
-      auto-fix-vscode-server = import ./modules/auto-fix-vscode-server.nix;
+      auto-fix-vscode-server = import ./modules/auto-fix-vscode-server.nix inputs;
       common = import ./modules/common.nix;
       welteki-users = import ./modules/welteki-users.nix;
       hetzner-cloud = import ./modules/virtualization/hetzner-cloud.nix;
