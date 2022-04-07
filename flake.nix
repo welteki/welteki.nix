@@ -21,9 +21,10 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, utils, deploy-rs, ... }@inputs: {
-    overlay = import ./overlay/default.nix inputs;
-
-    overlays.home = import ./overlay/home.nix;
+    overlays = {
+      default = import ./overlay/default.nix inputs;
+      home = import ./overlay/home.nix;
+    };
 
     nixosModules = {
       auto-fix-vscode-server = import inputs.vscode-server;
@@ -59,7 +60,7 @@
     let
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ self.overlay ];
+        overlays = [ self.overlays.default ];
       };
 
       pkgs-home = import nixpkgs-unstable {
@@ -97,7 +98,7 @@
         inherit (pkgs-home) lazygit gh-login;
       };
 
-      devShell = pkgs.mkShell {
+      devShells.default = pkgs.mkShell {
         buildInputs = [
           deploy-rs.packages.${system}.deploy-rs
           pkgs.nixpkgs-fmt
