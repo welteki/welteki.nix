@@ -13,9 +13,6 @@
 
     deploy-rs.url = "github:serokell/deploy-rs";
 
-    nixery.url = "github:tazjin/nixery";
-    nixery.flake = false;
-
     vscode-server.url = "github:msteen/nixos-vscode-server";
     vscode-server.flake = false;
   };
@@ -94,7 +91,7 @@
         };
 
       packages = {
-        inherit (pkgs) caddy nixery;
+        inherit (pkgs) caddy;
         inherit (pkgs-home) lazygit gh-login;
       };
 
