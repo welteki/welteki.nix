@@ -98,7 +98,7 @@
 
       packages = {
         inherit (pkgs) caddy;
-        inherit (pkgs-home) lazygit gh-login;
+        inherit (pkgs-home) lazygit;
       };
 
       devShells.default = pkgs.mkShell {

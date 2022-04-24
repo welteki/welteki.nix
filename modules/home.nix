@@ -44,10 +44,6 @@ in
 
     gh = {
       enable = true;
-      settings.aliases = {
-        login = "!${pkgs.gh-login}/bin/gh-login";
-      };
-
       enableGitCredentialHelper = true;
     };
 
