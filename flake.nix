@@ -29,8 +29,9 @@
       home = import ./overlay/home.nix;
     };
 
-    nixosModules = {
-      auto-fix-vscode-server = import inputs.vscode-server;
+    nixosModules = rec {
+      vscode-server = import inputs.vscode-server;
+      auto-fix-vscode-server = vscode-server;
       common = import ./modules/common.nix;
       welteki-users = import ./modules/welteki-users.nix;
       hetzner-cloud = import ./modules/virtualization/hetzner-cloud.nix;
