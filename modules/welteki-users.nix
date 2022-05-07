@@ -9,7 +9,4 @@ in
     openssh.authorizedKeys.keys = ssh-keys.welteki;
     extraGroups = [ "wheel" ];
   };
-
-  # Allow users with sudo to modify the nix store
-  nix.trustedUsers = [ "root" "@wheel" ];
 }
