@@ -9,6 +9,12 @@
 
   config = {
     nix = {
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-then 30d";
+      };
+
       autoOptimiseStore = true;
 
       requireSignedBinaryCaches = true;
