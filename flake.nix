@@ -38,6 +38,12 @@
       home = import ./modules/home.nix;
     };
 
+    nixosConfigurations.shlorp = nixpkgs-unstable.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [ ./hosts/shlorp ];
+      specialArgs = { inherit inputs; };
+    };
+
     deploy = {
       magicRollback = true;
       autoRollback = true;
