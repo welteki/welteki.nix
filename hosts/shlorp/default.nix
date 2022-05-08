@@ -8,6 +8,7 @@
     inputs.home-manager.nixosModules.home-manager
     ../../modules/users/welteki
     ../../modules/welteki-users.nix
+    ../../modules/docker
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -36,6 +37,10 @@
   welteki = {
     nix.enableFlakes = true;
   };
+
+  # Enable docker
+  welteki.docker.enable = true;
+  users.users.welteki.extraGroups = [ "docker" ];
 
   nixpkgs.config.allowUnfree = true;
 
