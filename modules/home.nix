@@ -9,8 +9,8 @@ in
   programs = {
     git = {
       enable = true;
-      userName = "Han Verstraete";
-      userEmail = "welteki@pm.me";
+      userName = "Han Verstraete (OpenFaaS Ltd)";
+      userEmail = "han@openfaas.com";
       aliases = {
         co = "checkout";
         ci = "commit";
