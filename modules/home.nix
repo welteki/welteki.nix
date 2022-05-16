@@ -133,7 +133,15 @@ in
     lazygit.enable = true;
   };
 
+  home.sessionPath = [
+    "$HOME/.arkade/bin/"
+  ];
+
   home.sessionVariables = {
     EDITOR = "vim";
   };
+
+  home.packages = [
+    pkgs.arkade
+  ];
 }
