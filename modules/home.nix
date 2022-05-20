@@ -9,8 +9,8 @@ in
   programs = {
     git = {
       enable = true;
-      userName = "Han Verstraete (OpenFaaS Ltd)";
-      userEmail = "han@openfaas.com";
+      userName = "Han Verstraete";
+      userEmail = "welteki@pm.me";
       aliases = {
         co = "checkout";
         ci = "commit";
@@ -41,6 +41,16 @@ in
       extraConfig = {
         init.defaultBranch = "main";
       };
+      includes = [
+        {
+          path = pkgs.writeText "git-openfaas" ''
+            [user]
+                name = Han Verstraete (OpenFaaS Ltd)
+                email = han@openfaas.com
+          '';
+          condition = "gitdir:~/code/openfaas/";
+        }
+      ];
     };
 
     gh = {
