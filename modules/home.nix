@@ -23,6 +23,7 @@ in
         mff = "merge --ff-only";
         l = "log";
         lo = "log --oneline";
+        signoff = ''!f() { git rebase --signoff @~''${1:-1}; }; f'';
       };
       ignores = [
         # macOS.gitignore source:https://github.com/github/gitignore/blob/master/Global/macOS.gitignore
