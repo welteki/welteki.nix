@@ -14,7 +14,7 @@
       url = "github:msteen/nixos-vscode-server";
       flake = false;
     };
-    nixpkgs.url = "nixpkgs/nixos-21.11";
+    nixpkgs.url = "nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -114,6 +114,6 @@
         ];
       };
 
-      checks = deploy-rs.lib.${system}.deployChecks self.deploy;
+      # checks = deploy-rs.lib.${system}.deployChecks self.deploy;
     });
 }
