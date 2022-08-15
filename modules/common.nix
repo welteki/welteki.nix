@@ -22,5 +22,5 @@
     # ports = [ 14436 ];
   };
 
-  environment.systemPackages = lib.attrVals [ "vim" ] pkgs;
+  environment.systemPackages = lib.attrVals [ "vim" "git" ] pkgs;
 }

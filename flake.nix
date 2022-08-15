@@ -38,10 +38,15 @@
       home = import ./modules/home.nix;
     };
 
-    nixosConfigurations.shlorp = nixpkgs-unstable.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [ ./hosts/shlorp ];
-      specialArgs = { inherit inputs; };
+    # nixosConfigurations.shlorp = nixpkgs-unstable.lib.nixosSystem {
+    #   system = "x86_64-linux";
+    #   modules = [ ./hosts/shlorp ];
+    #   specialArgs = { inherit inputs; };
+    # };
+
+    nixosConfigurations.nixpi = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [ ./hosts/nixpi ];
     };
 
     deploy = {
