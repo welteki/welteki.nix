@@ -21,6 +21,8 @@
       flake = false;
     };
     utils.url = "github:numtide/flake-utils";
+
+    faasd.url = "github:welteki/faasd-nix/multiarch";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, utils, deploy-rs, ... }@inputs: {
@@ -47,6 +49,7 @@
     nixosConfigurations.nixpi = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       modules = [ ./hosts/nixpi ];
+      specialArgs = { inherit inputs; };
     };
 
     deploy = {

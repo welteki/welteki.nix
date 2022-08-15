@@ -1,9 +1,11 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports = [
     ../../modules/common.nix
     ../../modules/welteki-users.nix
+
+    inputs.faasd.nixosModules.faasd
   ];
 
   boot = {
@@ -34,6 +36,8 @@
   documentation.nixos.enable = false;
 
   welteki.nix.enableFlakes = true;
+
+  services.faasd.enable = true;
 
   networking.hostName = "nixpi";
   system.stateVersion = "22.05";
