@@ -80,27 +80,26 @@
     in
     {
       legacyPackages.homeConfigurations.welteki =
-        let
-          configuration = { config, pkgs, lib, ... }: {
-            imports = [ self.nixosModules.home ];
-
-            # Let Home Manager install and manage itself.
-            programs.home-manager.enable = true;
-
-            home.packages = [ ] ++ lib.optionals pkgs.stdenv.isDarwin [
-              # Ensure at least bash v4 on macOS
-              pkgs.bash
-            ];
-          };
-
-        in
         inputs.home-manager.lib.homeManagerConfiguration {
-          inherit system;
           pkgs = pkgs-home;
-          homeDirectory = if pkgs.stdenv.isDarwin then "/Users/welteki" else "/home/welteki";
-          username = "welteki";
-          stateVersion = "21.11";
-          inherit configuration;
+          modules = [
+            self.nixosModules.home
+            ({ config, pkgs, lib, ... }: {
+              # Let Home Manager install and manage itself.
+              programs.home-manager.enable = true;
+
+              home = {
+                username = "welteki";
+                homeDirectory = if pkgs.stdenv.isDarwin then "/Users/welteki" else "/home/welteki";
+                stateVersion = "22.05";
+
+                packages = [ ] ++ lib.optionals pkgs.stdenv.isDarwin [
+                  # Ensure at least bash v4 on macOS
+                  pkgs.bash
+                ];
+              };
+            })
+          ];
         };
 
       packages = {
