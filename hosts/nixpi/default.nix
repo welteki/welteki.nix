@@ -13,12 +13,6 @@
 
     loader = {
       grub.enable = lib.mkDefault false;
-
-      raspberryPi = {
-        enable = true;
-        version = 3;
-
-      };
     };
 
   };
