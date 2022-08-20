@@ -8,14 +8,13 @@
     inputs.faasd.nixosModules.faasd
   ];
 
-  boot = {
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
 
-    loader = {
-      grub.enable = lib.mkDefault false;
-    };
-
-  };
+  boot.loader.grub.enable = false;
+  boot.loader.generic-extlinux-compatible.enable = true;
+  boot.kernelParams = [ "cma=32M" ];
+  boot.initrd.kernelModules = [ "vc4" "bcm2835_dma" "i2c_bcm2835" ];
+  hardware.enableRedistributableFirmware = true;
 
   fileSystems = {
     "/" = {
