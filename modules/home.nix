@@ -3,8 +3,8 @@ let
   aliases = {
     g = "git";
     lg = "lazygit";
-    of-passwd = "kubectl get secret -n openfaas basic-auth -o jsonpath='{.data.basic-auth-password}' | base64 --decode; echo";
-    of-login = "kubectl get secret -n openfaas basic-auth -o jsonpath='{.data.basic-auth-password}' | base64 --decode | faas-cli login --username admin --password-stdin";
+    ofpasswd = "kubectl get secret -n openfaas basic-auth -o jsonpath='{.data.basic-auth-password}' | base64 --decode; echo";
+    oflogin = "kubectl get secret -n openfaas basic-auth -o jsonpath='{.data.basic-auth-password}' | base64 --decode | faas-cli login --username admin --password-stdin";
   };
 in
 {
