@@ -103,7 +103,7 @@
         };
 
       packages = {
-        inherit (pkgs) caddy nsc;
+        inherit (pkgs) caddy nsc supabase;
         inherit (pkgs-home) lazygit;
       };
 

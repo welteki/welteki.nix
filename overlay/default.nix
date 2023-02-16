@@ -6,4 +6,5 @@ final: prev:
 
   caddy = import ./caddy final;
   nsc = import ./nsc final;
+  supabase = import ./supabase final;
 }
