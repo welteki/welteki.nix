@@ -5,6 +5,9 @@ let
     lg = "lazygit";
     ofpasswd = "kubectl get secret -n openfaas basic-auth -o jsonpath='{.data.basic-auth-password}' | base64 --decode; echo";
     oflogin = "kubectl get secret -n openfaas basic-auth -o jsonpath='{.data.basic-auth-password}' | base64 --decode | faas-cli login --username admin --password-stdin";
+    kctl = "kubectl";
+    kctx = "kubectx";
+    kns = "kubens";
   };
 in
 {
@@ -114,6 +117,7 @@ in
           symbol = " ";
         };
         kubernetes = {
+          disabled = false;
           symbol = "ﴱ ";
         };
         nix_shell = {
@@ -136,7 +140,7 @@ in
 
     vim.enable = true;
 
-
+    fzf.enable = true;
     bat.enable = true;
     jq.enable = true;
     exa = {
