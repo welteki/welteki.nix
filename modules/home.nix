@@ -60,7 +60,7 @@ in
 
     gh = {
       enable = true;
-      enableGitCredentialHelper = true;
+      gitCredentialHelper.enable = true;
     };
 
     tmux = {
