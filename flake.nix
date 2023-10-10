@@ -6,10 +6,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     vscode-server = {
       url = "github:msteen/nixos-vscode-server";
       flake = false;
@@ -19,7 +15,7 @@
     utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, utils, deploy-rs, ... }@inputs: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, utils, ... }@inputs: {
     overlays = {
       default = import ./overlay/default.nix inputs;
       home = import ./overlay/home.nix;
@@ -33,35 +29,6 @@
       hetzner-cloud = import ./modules/virtualization/hetzner-cloud.nix;
       home = import ./modules/home.nix;
     };
-
-    nixosConfigurations.shlorp = nixpkgs-unstable.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [ ./hosts/shlorp ];
-      specialArgs = { inherit inputs; };
-    };
-
-    deploy = {
-      magicRollback = true;
-      autoRollback = true;
-
-      sshUser = "welteki";
-      sshOpts = [ "-i" "~/.ssh/welteki" ];
-
-      nodes.shlorp =
-        let
-          system = "x86_64-linux";
-        in
-        {
-          hostname = "shlorp.welteki.com";
-          profiles.welteki-home = {
-            user = "welteki";
-            profilePath = "/nix/var/nix/profiles/per-user/welteki/home-manager";
-            path =
-              deploy-rs.lib.${system}.activate.home-manager self.legacyPackages.${system}.homeConfigurations.welteki;
-          };
-        };
-    };
-
   } // utils.lib.eachDefaultSystem (system:
     let
       pkgs = import nixpkgs {
@@ -105,11 +72,8 @@
 
       devShells.default = pkgs.mkShell {
         buildInputs = [
-          deploy-rs.packages.${system}.deploy-rs
           pkgs.nixpkgs-fmt
         ];
       };
-
-      # checks = deploy-rs.lib.${system}.deployChecks self.deploy;
     });
 }
