@@ -65,8 +65,7 @@ in
 
     tmux = {
       enable = true;
-      shortcut = "a";
-      baseIndex = 1;
+
     };
 
     zsh = {
