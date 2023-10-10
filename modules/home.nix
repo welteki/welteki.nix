@@ -96,7 +96,6 @@ in
       nix-direnv.enable = true;
     };
 
-
     starship = {
       enable = true;
       enableZshIntegration = true;
@@ -141,7 +140,7 @@ in
     fzf.enable = true;
     bat.enable = true;
     jq.enable = true;
-    exa = {
+    eza = {
       enable = true;
       enableAliases = true;
     };
