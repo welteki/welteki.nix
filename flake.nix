@@ -76,9 +76,12 @@
         inherit (pkgs-home) lazygit;
       };
 
-      devShells.default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.nixpkgs-fmt
+      devShells.default = inputs.devenv.lib.mkShell {
+        inherit inputs pkgs;
+        modules = [
+          ({pkgs, ...}: {
+            languages.nix.enable = true;
+          })
         ];
       };
     });
