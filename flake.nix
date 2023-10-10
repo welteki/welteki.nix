@@ -16,10 +16,6 @@
     };
     nixpkgs.url = "nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
     utils.url = "github:numtide/flake-utils";
   };
 
