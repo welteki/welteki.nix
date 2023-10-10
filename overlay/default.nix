@@ -1,9 +1,11 @@
 inputs:
 
 final: prev:
+let
+  inherit (inputs) devenv;
+in
 {
-  inherit inputs;
-
+  devenv = devenv.packages.${final.system}.devenv;
   actuated-cli = import ./actuated-cli final;
   caddy = import ./caddy final;
   nsc = import ./nsc final;

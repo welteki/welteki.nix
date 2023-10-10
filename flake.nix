@@ -13,6 +13,12 @@
     nixpkgs.url = "nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
+    devenv.url = "github:cachix/devenv/v0.6.3";
+  };
+
+  nixConfig = {
+    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
+    extra-substituters = "https://devenv.cachix.org";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, utils, ... }@inputs: {
@@ -66,7 +72,7 @@
         };
 
       packages = {
-        inherit (pkgs) actuated-cli caddy nsc supabase;
+        inherit (pkgs) actuated-cli caddy nsc supabase devenv;
         inherit (pkgs-home) lazygit;
       };
 
