@@ -1,5 +1,12 @@
+inputs:
+
 final: prev:
+let
+  inherit (inputs) devenv;
+in
 {
+  devenv = devenv.packages.${final.system}.devenv;
+
   # lazygit =
   #   final.writeShellScriptBin "lazygit" ''
   #     if [ -e ./lg_config.yml ]; then

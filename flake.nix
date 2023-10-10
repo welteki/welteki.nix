@@ -24,7 +24,7 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, utils, ... }@inputs: {
     overlays = {
       default = import ./overlay/default.nix inputs;
-      home = import ./overlay/home.nix;
+      home = import ./overlay/home.nix inputs;
     };
 
     nixosModules = rec {
