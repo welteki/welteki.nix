@@ -10,7 +10,7 @@
       url = "github:msteen/nixos-vscode-server";
       flake = false;
     };
-    nixpkgs.url = "nixpkgs/nixos-22.11";
+    nixpkgs.url = "nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
   };
