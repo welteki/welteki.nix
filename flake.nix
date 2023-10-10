@@ -73,7 +73,6 @@
 
       packages = {
         inherit (pkgs) actuated-cli caddy nsc supabase devenv;
-        inherit (pkgs-home) lazygit;
       };
 
       devShells.default = inputs.devenv.lib.mkShell {
