@@ -72,7 +72,7 @@
         };
 
       packages = {
-        inherit (pkgs) actuated-cli caddy nsc supabase devenv;
+        inherit (pkgs) actuated-cli caddy nsc supabase devenv mass-deploy;
       };
 
       devShells.default = inputs.devenv.lib.mkShell {

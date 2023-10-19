@@ -10,4 +10,5 @@ in
   caddy = import ./caddy final;
   nsc = import ./nsc final;
   supabase = import ./supabase final;
+  mass-deploy = import ./mass-deploy final;
 }
