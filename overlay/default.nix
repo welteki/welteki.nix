@@ -11,4 +11,5 @@ in
   nsc = import ./nsc final;
   supabase = import ./supabase final;
   mass-deploy = import ./mass-deploy final;
+  gok = import ./gok final;
 }
