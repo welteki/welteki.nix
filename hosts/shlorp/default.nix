@@ -6,7 +6,7 @@
     ../../modules/common.nix
 
     inputs.home-manager.nixosModules.home-manager
-    ../../modules/users/welteki
+    #../../modules/users/welteki
     ../../modules/welteki-users.nix
     ../../modules/docker
   ];
