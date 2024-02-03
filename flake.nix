@@ -57,12 +57,16 @@
               # Let Home Manager install and manage itself.
               programs.home-manager.enable = true;
 
+             fonts.fontconfig.enable = true;
+
               home = {
                 username = "welteki";
                 homeDirectory = if pkgs.stdenv.isDarwin then "/Users/welteki" else "/home/welteki";
                 stateVersion = "22.05";
 
-                packages = [ ] ++ lib.optionals pkgs.stdenv.isDarwin [
+                packages = [
+                  (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+                ] ++ lib.optionals pkgs.stdenv.isDarwin [
                   # Ensure at least bash v4 on macOS
                   pkgs.bash
                 ];
