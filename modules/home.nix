@@ -142,7 +142,7 @@ in
     jq.enable = true;
     eza = {
       enable = true;
-      enableAliases = true;
+      enableBashIntegration = true;
     };
     lazygit.enable = true;
   };
