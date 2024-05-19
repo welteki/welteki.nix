@@ -142,6 +142,9 @@ in
         git_status = {
           disabled = true;
         };
+        hostname = {
+          ssh_symbol = " ";
+        };
       };
     };
 
