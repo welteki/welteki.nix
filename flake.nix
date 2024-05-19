@@ -51,8 +51,8 @@
       };
     in
     {
-      legacyPackages.homeConfigurations.welteki =
-        inputs.home-manager.lib.homeManagerConfiguration {
+      legacyPackages.homeConfigurations = {
+        welteki = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs-home;
           modules = [
             self.nixosModules.home
@@ -77,6 +77,41 @@
             })
           ];
         };
+
+        welteki-mb-air = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs-home;
+          modules = [
+            self.nixosModules.home
+            ({ pkgs, ... }: {
+              # Let Home Manager install and manage itself.
+              programs.home-manager.enable = true;
+
+              fonts.fontconfig.enable = true;
+
+              home = {
+                username = "welteki";
+                homeDirectory = "/Users/welteki";
+                stateVersion = "22.05";
+
+                packages = [
+                  pkgs.nerdfonts
+                ];
+              };
+
+              programs = {
+                kitty = {
+                  enable = true;
+                  font = {
+                    name = "FiraCode Nerd Font Mono";
+                    size = 11.0;
+                  };
+                };
+              };
+
+            })
+          ];
+        };
+      };
 
       packages = {
         inherit (pkgs)
