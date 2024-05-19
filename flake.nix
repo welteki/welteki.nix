@@ -25,6 +25,9 @@
     overlays = {
       default = import ./overlay/default.nix inputs;
       home = import ./overlay/home.nix inputs;
+      fonts = final: prev: {
+        nerdfonts = (prev.nerdfonts.override { fonts = [ "FiraCode" ]; });
+      };
     };
 
     nixosModules = rec {
@@ -44,7 +47,7 @@
 
       pkgs-home = import nixpkgs-unstable {
         inherit system;
-        overlays = [ self.overlays.home ];
+        overlays = [ self.overlays.home self.overlays.fonts ];
       };
     in
     {
@@ -57,7 +60,7 @@
               # Let Home Manager install and manage itself.
               programs.home-manager.enable = true;
 
-             fonts.fontconfig.enable = true;
+              fonts.fontconfig.enable = true;
 
               home = {
                 username = "welteki";
@@ -65,9 +68,9 @@
                 stateVersion = "22.05";
 
                 packages = [
-                  (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+                  pkgs.nerdfonts
                 ] ++ lib.optionals pkgs.stdenv.isDarwin [
-                  # Ensure at least bash v4 on macOS
+                  # Ensure at least bash v5 on macOS
                   pkgs.bash
                 ];
               };
@@ -89,7 +92,7 @@
       devShells.default = inputs.devenv.lib.mkShell {
         inherit inputs pkgs;
         modules = [
-          ({pkgs, ...}: {
+          ({ pkgs, ... }: {
             languages.nix.enable = true;
           })
         ];
