@@ -135,6 +135,10 @@ in
         direnv = {
           disabled = false;
         };
+        shlvl = {
+          disabled = false;
+          symbol = "󰹹 ";
+        };
       };
     };
 
