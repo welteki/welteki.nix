@@ -139,6 +139,9 @@ in
           disabled = false;
           symbol = "󰹹 ";
         };
+        git_status = {
+          disabled = true;
+        };
       };
     };
 
