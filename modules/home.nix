@@ -132,6 +132,9 @@ in
         terraform = {
           symbol = "  ";
         };
+        direnv = {
+          disabled = false;
+        };
       };
     };
 
