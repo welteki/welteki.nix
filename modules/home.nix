@@ -115,7 +115,7 @@ in
         };
         kubernetes = {
           disabled = false;
-          symbol = "ﴱ ";
+          symbol = "󱃾 ";
         };
         nix_shell = {
           symbol = " ";
@@ -124,7 +124,7 @@ in
           symbol = " ";
         };
         package = {
-          symbol = " ";
+          symbol = " ";
         };
         python = {
           symbol = " ";
