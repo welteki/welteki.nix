@@ -5,16 +5,16 @@
 
 buildGoModule rec {
   pname = "mass-deploy";
-  version = "410dfd882f2f3eb967a5e69f37246d5f8b68d573";
+  version = "b9a83f9a6d64f957e7fcf2dd31b0d92de13305cb";
 
   src = fetchFromGitHub {
     owner = "openfaas";
     repo = "mass-deploy";
     rev = "${version}";
-    sha256 = "sha256-zdmxLAzxh7rgR7/EU1/2KF3CPMqZPxZHsyIrqRMl6Zc=";
+    sha256 = "sha256-0jcQ34UHWoRmchJY/ys+pPI6LGhraWMFQbwqGXeCRs8=";
   };
 
-  vendorSha256 = "sha256-/3Jny2nWdOnRsc53s01IRhvWITt2Ac5URVWtOODTE8Q=";
+  vendorHash = "sha256-/3Jny2nWdOnRsc53s01IRhvWITt2Ac5URVWtOODTE8Q=";
 
   CGO_ENABLED = 0;
 
