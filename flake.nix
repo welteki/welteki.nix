@@ -117,11 +117,8 @@
         inherit (pkgs)
           actuated-cli
           caddy
-          nsc
-          supabase
           devenv
-          mass-deploy
-          gok;
+          mass-deploy;
       };
 
       devShells.default = inputs.devenv.lib.mkShell {
