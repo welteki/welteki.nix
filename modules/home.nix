@@ -171,6 +171,7 @@ in
   home.packages = [
     pkgs.arkade
     pkgs.devenv
+    pkgs.btop
   ];
 
   nix = {
