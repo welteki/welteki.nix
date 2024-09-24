@@ -158,6 +158,11 @@ in
       enableBashIntegration = true;
     };
     lazygit.enable = true;
+    atuin = {
+      enable = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
+    };
   };
 
   home.sessionPath = [
