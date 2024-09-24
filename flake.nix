@@ -118,7 +118,8 @@
           actuated-cli
           caddy
           devenv
-          mass-deploy;
+          mass-deploy
+          kubetrim;
       };
 
       devShells.default = inputs.devenv.lib.mkShell {

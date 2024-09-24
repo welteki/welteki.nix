@@ -1,8 +1,8 @@
 {
   "nixEnvSelector.nixFile": "${workspaceRoot}/shell.nix",
-  "[nix]": {
-    "editor.defaultFormatter": "jnoortheen.nix-ide"
-  },
+  // "[nix]": {
+  //   "editor.defaultFormatter": "jnoortheen.nix-ide"
+  // },
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "files.watcherExclude": {
