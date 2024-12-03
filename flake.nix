@@ -25,9 +25,6 @@
     overlays = {
       default = import ./overlay/default.nix inputs;
       home = import ./overlay/home.nix inputs;
-      fonts = final: prev: {
-        nerdfonts = (prev.nerdfonts.override { fonts = [ "FiraCode" ]; });
-      };
     };
 
     nixosModules = rec {
@@ -47,7 +44,7 @@
 
       pkgs-home = import nixpkgs-unstable {
         inherit system;
-        overlays = [ self.overlays.home self.overlays.fonts ];
+        overlays = [ self.overlays.home ];
       };
     in
     {
@@ -68,7 +65,7 @@
                 stateVersion = "22.05";
 
                 packages = [
-                  pkgs.nerdfonts
+                  pkgs.nerd-fonts.fira-code
                 ] ++ lib.optionals pkgs.stdenv.isDarwin [
                   # Ensure at least bash v5 on macOS
                   pkgs.bash
@@ -94,7 +91,7 @@
                 stateVersion = "22.05";
 
                 packages = [
-                  pkgs.nerdfonts
+                  pkgs.nerd-fonts.fira-code
                 ];
               };
 
