@@ -14,6 +14,7 @@
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
     devenv.url = "github:cachix/devenv/v0.6.3";
+    inlets.url = "github:welteki/inlets-nix";
   };
 
   nixConfig = {
@@ -112,6 +113,7 @@
 
       packages = {
         inherit (pkgs)
+          inlets
           actuated-cli
           caddy
           devenv
