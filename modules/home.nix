@@ -159,7 +159,7 @@ in
     };
     lazygit.enable = true;
     atuin = {
-      enable = true;
+      enable = false;
       enableBashIntegration = true;
       enableZshIntegration = true;
     };
