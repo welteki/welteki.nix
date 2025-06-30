@@ -1,22 +1,19 @@
-{ buildGoModule
-, fetchFromGitHub
-, ...
-}:
+{ buildGoModule, fetchFromGitHub, ... }:
 
 buildGoModule rec {
   pname = "mass-deploy";
-  version = "b9a83f9a6d64f957e7fcf2dd31b0d92de13305cb";
+  version = "8871a682125977929a7faf10baf930ef926ce83f";
 
   src = fetchFromGitHub {
     owner = "openfaas";
     repo = "mass-deploy";
     rev = "${version}";
-    sha256 = "sha256-0jcQ34UHWoRmchJY/ys+pPI6LGhraWMFQbwqGXeCRs8=";
+    sha256 = "sha256-nxPZIPyUUAm7Y/Z2Ddvs1jTS7qXgn4LkGCJ+ufEdICI=";
   };
 
-  vendorHash = "sha256-/3Jny2nWdOnRsc53s01IRhvWITt2Ac5URVWtOODTE8Q=";
+  vendorHash = "sha256-cM43Xos+Zi71tpkgBz1zr8yA5iek+vO9R1XCCwx4TyU=";
 
-  CGO_ENABLED = 0;
+  env.CGO_ENABLED = false;
 
   subPackages = [ "." ];
 }
