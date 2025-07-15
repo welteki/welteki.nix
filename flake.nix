@@ -118,7 +118,8 @@
           caddy
           devenv
           mass-deploy
-          kubetrim;
+          kubetrim
+          nats-server-dev;
       };
 
       devShells.default = inputs.devenv.lib.mkShell {

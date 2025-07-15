@@ -3,7 +3,7 @@
   // "[nix]": {
   //   "editor.defaultFormatter": "jnoortheen.nix-ide"
   // },
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "editor.formatOnType": true,
   "files.watcherExclude": {
     "**/.tmp/*/**": true
