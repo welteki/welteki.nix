@@ -182,7 +182,7 @@ in
 
   nix = {
     enable = true;
-    package = pkgs.nixVersions.nix_2_25;
+    package = pkgs.nixVersions.nix_2_31;
     settings = {
       experimental-features = "nix-command flakes";
       # builders = "ssh://nix@pi8.local aarch64-linux";
