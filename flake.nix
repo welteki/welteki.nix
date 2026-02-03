@@ -13,7 +13,7 @@
     nixpkgs.url = "nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
-    devenv.url = "github:cachix/devenv/v0.6.3";
+    devenv.url = "github:cachix/devenv/v1.8";
     inlets.url = "github:welteki/inlets-nix";
   };
 
@@ -127,6 +127,7 @@
         modules = [
           ({ pkgs, ... }: {
             languages.nix.enable = true;
+            languages.nix.lsp.package = pkgs.nixd;
             languages.go.enable = true;
           })
         ];
