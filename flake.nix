@@ -45,6 +45,7 @@
 
       pkgs-home = import nixpkgs-unstable {
         inherit system;
+        config.allowUnfree = true;
         overlays = [ self.overlays.home ];
       };
     in

@@ -177,6 +177,7 @@ in
     pkgs.arkade
     pkgs.devenv
     pkgs.btop
+    pkgs.github-copilot-cli
   ];
 
   nix = {
