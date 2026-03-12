@@ -9,6 +9,7 @@ in {
   caddy = import ./caddy final;
   mass-deploy = import ./mass-deploy final;
   kubetrim = import ./kubetrim final;
+  copilot-usage = import ./copilot-usage final;
 
   nats-server-dev = prev.nats-server.overrideAttrs (old: rec {
     pname = "nats-server-dev";
