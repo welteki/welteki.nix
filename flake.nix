@@ -33,8 +33,7 @@
       in {
         packages = {
           inherit (pkgs)
-            inlets actuated-cli caddy devenv mass-deploy kubetrim
-            copilot-usage nats-server-dev;
+            inlets actuated-cli caddy devenv mass-deploy kubetrim;
         };
 
         devShells.default = inputs.devenv.lib.mkShell {
