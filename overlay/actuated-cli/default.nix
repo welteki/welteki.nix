@@ -5,16 +5,16 @@
 
 buildGoModule rec {
   pname = "actuated-cli";
-  version = "0.2.5";
+  version = "0.2.14";
 
   src = fetchFromGitHub {
     owner = "self-actuated";
     repo = "actuated-cli";
     rev = "v${version}";
-    sha256 = "sha256-YyE3JEZTjXADQXK3fBjCCiaKV84Q5PvXz/5jNULHnS0=";
+    sha256 = "sha256-EIldUfLlhoJtV6fZWvmMUcSrXynWt4uKLawBr26/y/c=";
   };
 
-  vendorHash = "sha256-wVQwmAaPsGGaJCPmkCKPtdJMzVDhJsEeh7JasBVBX1E=";
+  vendorHash = null;
 
   ldflags = [
     "-s"
