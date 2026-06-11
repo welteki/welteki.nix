@@ -2,7 +2,7 @@
   description = "Welteki's Nix library";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.11";
+    nixpkgs.url = "nixpkgs/nixos-26.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
     devenv.url = "github:cachix/devenv/v2.1.2";
     inlets.url = "github:welteki/inlets-nix";
