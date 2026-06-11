@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 let
   ssh-keys = import ./ssh-keys.nix;

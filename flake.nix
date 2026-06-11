@@ -2,10 +2,6 @@
   description = "Welteki's Nix library";
 
   inputs = {
-    vscode-server = {
-      url = "github:msteen/nixos-vscode-server";
-      flake = false;
-    };
     nixpkgs.url = "nixpkgs/nixos-25.11";
     utils.url = "github:numtide/flake-utils";
     devenv.url = "github:cachix/devenv/v1.8";
@@ -22,16 +18,11 @@
     {
       overlays = {
         default = import ./overlay/default.nix inputs;
-        home = import ./overlay/home.nix inputs;
       };
 
-      nixosModules = rec {
-        vscode-server = import inputs.vscode-server;
-        auto-fix-vscode-server = vscode-server;
+      nixosModules = {
         common = import ./modules/common.nix;
         welteki-users = import ./modules/welteki-users.nix;
-        hetzner-cloud = import ./modules/virtualization/hetzner-cloud.nix;
-        home = import ./modules/home.nix;
       };
     } // utils.lib.eachDefaultSystem (system:
       let

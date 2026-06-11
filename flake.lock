@@ -247,8 +247,7 @@
         "devenv": "devenv",
         "inlets": "inlets",
         "nixpkgs": "nixpkgs_3",
-        "utils": "utils_2",
-        "vscode-server": "vscode-server"
+        "utils": "utils_2"
       }
     },
     "systems": {
@@ -314,22 +313,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "vscode-server": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1770124655,
-        "narHash": "sha256-yHmd2B13EtBUPLJ+x0EaBwNkQr9LTne1arLVxT6hSnY=",
-        "owner": "msteen",
-        "repo": "nixos-vscode-server",
-        "rev": "92ce71c3ba5a94f854e02d57b14af4997ab54ef0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "msteen",
-        "repo": "nixos-vscode-server",
         "type": "github"
       }
     }
