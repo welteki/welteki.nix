@@ -16,7 +16,5 @@ buildGoModule rec {
 
   vendorHash = "sha256-m9OuVFlD4F170Q6653HdvUhdULjR2cAttLsUN03XIXo=";
 
-  CGO_ENABLED = 0;
-
   subPackages = [ "." ];
 }

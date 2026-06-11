@@ -21,7 +21,5 @@ buildGoModule rec {
     "-w"
   ];
 
-  CGO_ENABLED = 0;
-
   subPackages = [ "." ];
 }
