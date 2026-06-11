@@ -2,16 +2,16 @@
 
 buildGoModule rec {
   pname = "mass-deploy";
-  version = "8871a682125977929a7faf10baf930ef926ce83f";
+  version = "6c0e027952e811b3ea2c8a28870fd4f128881168";
 
   src = fetchFromGitHub {
     owner = "openfaas";
     repo = "mass-deploy";
     rev = "${version}";
-    sha256 = "sha256-nxPZIPyUUAm7Y/Z2Ddvs1jTS7qXgn4LkGCJ+ufEdICI=";
+    sha256 = "sha256-Gxyf/mnJCad3Elrh7iQB9l4M1anD5gIXmxguNw0bqmY=";
   };
 
-  vendorHash = "sha256-cM43Xos+Zi71tpkgBz1zr8yA5iek+vO9R1XCCwx4TyU=";
+  vendorHash = "sha256-XUfP+Gg90Yo+/FcXRijAWpqWzqhmYZydfn1nM+4t5pk=";
 
   env.CGO_ENABLED = false;
 
