@@ -10,7 +10,7 @@
     logRefusedConnections = false;
   };
 
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -18,7 +18,7 @@
 
   services.openssh = {
     enable = true;
-    passwordAuthentication = false;
+    settings.PasswordAuthentication = false;
     # ports = [ 14436 ];
   };
 
