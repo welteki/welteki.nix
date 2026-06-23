@@ -2,8 +2,8 @@
 {
   options.welteki.nix = {
     enableFlakes = lib.mkOption {
-      default = false;
-      example = true;
+      default = true;
+      example = false;
     };
   };
 
