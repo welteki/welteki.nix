@@ -1,0 +1,33 @@
+name: publish
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v25
+
+      - name: Setup Attic
+        env:
+          ATTIC_ENDPOINT: ${{ secrets.ATTIC_ENDPOINT }}
+          ATTIC_TOKEN: ${{ secrets.ATTIC_TOKEN }}
+        run: |
+          nix profile install nixpkgs#attic-client
+          attic login ci-cache "$ATTIC_ENDPOINT" "$ATTIC_TOKEN"
+          attic use welteki
+
+      - name: Build and push packages
+        run: |
+          nix build --no-link --print-out-paths \
+            .#actuated-cli \
+            .#caddy \
+            .#mass-deploy \
+            .#kubetrim \
+            | attic push welteki --stdin
