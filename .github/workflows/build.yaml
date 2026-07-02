@@ -21,4 +21,5 @@ jobs:
             .#actuated-cli \
             .#caddy \
             .#mass-deploy \
-            .#kubetrim
+            .#kubetrim \
+            .#hunk

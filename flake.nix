@@ -5,6 +5,10 @@
     nixpkgs.url = "nixpkgs/nixos-26.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
     devenv.url = "github:cachix/devenv/v2.1.2";
+    hunk = {
+      url = "github:modem-dev/hunk/v0.16.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     inlets.url = "github:welteki/inlets-nix";
   };
 
@@ -37,7 +41,7 @@
         in {
           packages = {
             inherit (pkgs)
-              inlets actuated-cli caddy devenv mass-deploy kubetrim;
+              inlets actuated-cli caddy devenv mass-deploy kubetrim hunk;
           };
 
           devShells.default = inputs.devenv.lib.mkShell {
