@@ -43,15 +43,15 @@
             config.allowUnfree = true;
           };
         in {
-          packages = {
-            inherit (pkgs)
-              inlets actuated-cli caddy devenv mass-deploy kubetrim hunk herdr;
-          };
+          packages = inputs.self.overlays.default pkgs pkgs;
 
           devShells.default = inputs.devenv.lib.mkShell {
             inherit inputs pkgs;
             modules = [
               ({ pkgs, ... }: {
+                devenv.root =
+                  let pwd = builtins.getEnv "PWD";
+                  in if pwd != "" then pwd else builtins.toString ./.;
                 languages.nix.enable = true;
                 languages.nix.lsp.package = pkgs.nixd;
                 languages.go.enable = true;
