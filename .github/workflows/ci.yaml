@@ -21,6 +21,15 @@ jobs:
       - name: Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v8
 
+      - name: Setup Attic
+        env:
+          ATTIC_ENDPOINT: ${{ secrets.ATTIC_ENDPOINT }}
+          ATTIC_TOKEN: ${{ secrets.ATTIC_TOKEN }}
+        run: |
+          nix profile install nixpkgs#attic-client
+          attic login ci-cache "$ATTIC_ENDPOINT" "$ATTIC_TOKEN"
+          attic use welteki
+
       - name: Build packages
         run: |
           nix build --no-link --print-out-paths \
