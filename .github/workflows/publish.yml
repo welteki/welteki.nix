@@ -31,4 +31,5 @@ jobs:
             .#mass-deploy \
             .#kubetrim \
             .#hunk \
+            .#herdr \
             | attic push welteki --stdin

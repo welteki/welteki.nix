@@ -26,4 +26,5 @@ jobs:
             .#caddy \
             .#mass-deploy \
             .#kubetrim \
-            .#hunk
+            .#hunk \
+            .#herdr

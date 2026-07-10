@@ -9,6 +9,10 @@
       url = "github:modem-dev/hunk/v0.16.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    herdr = {
+      url = "github:ogulcancelik/herdr/v0.7.3";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     inlets.url = "github:welteki/inlets-nix";
   };
 
@@ -41,7 +45,7 @@
         in {
           packages = {
             inherit (pkgs)
-              inlets actuated-cli caddy devenv mass-deploy kubetrim hunk;
+              inlets actuated-cli caddy devenv mass-deploy kubetrim hunk herdr;
           };
 
           devShells.default = inputs.devenv.lib.mkShell {
