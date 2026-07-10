@@ -1,0 +1,58 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+
+concurrency:
+  group: ci-${{ github.head_ref || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v25
+
+      - name: Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v8
+
+      - name: Build packages
+        run: |
+          nix build --no-link --print-out-paths \
+            $(nix flake show --json 2>/dev/null | \
+              jq -r '.packages."x86_64-linux" | keys[] | ".#\(.)"')
+
+  publish:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v25
+
+      - name: Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v8
+
+      - name: Setup Attic
+        env:
+          ATTIC_ENDPOINT: ${{ secrets.ATTIC_ENDPOINT }}
+          ATTIC_TOKEN: ${{ secrets.ATTIC_TOKEN }}
+        run: |
+          nix profile install nixpkgs#attic-client
+          attic login ci-cache "$ATTIC_ENDPOINT" "$ATTIC_TOKEN"
+          attic use welteki
+
+      - name: Build and push packages
+        run: |
+          nix build --no-link --print-out-paths \
+            $(nix flake show --json 2>/dev/null | \
+              jq -r '.packages."x86_64-linux" | keys[] | ".#\(.)"') \
+            | attic push welteki --stdin
