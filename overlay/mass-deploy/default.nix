@@ -1,17 +1,17 @@
-{ buildGoModule, fetchFromGitHub, ... }:
+{ buildGoModule, go_1_27, fetchFromGitHub, ... }:
 
-buildGoModule rec {
+buildGoModule.override { go = go_1_27; } rec {
   pname = "mass-deploy";
-  version = "6c0e027952e811b3ea2c8a28870fd4f128881168";
+  version = "df56070d5baa8eb5a99bcfff9e695d6336cec72e";
 
   src = fetchFromGitHub {
     owner = "openfaas";
     repo = "mass-deploy";
     rev = "${version}";
-    sha256 = "sha256-Gxyf/mnJCad3Elrh7iQB9l4M1anD5gIXmxguNw0bqmY=";
+    sha256 = "sha256-2EEWnhxpcn2XUPnXLimCXEQ5vZ30H5w3vkhgXQtuLyQ=";
   };
 
-  vendorHash = "sha256-XUfP+Gg90Yo+/FcXRijAWpqWzqhmYZydfn1nM+4t5pk=";
+  vendorHash = null;
 
   env.CGO_ENABLED = false;
 

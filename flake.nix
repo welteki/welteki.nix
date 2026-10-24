@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-26.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    devenv.url = "github:cachix/devenv/v2.1.2";
+    devenv.url = "github:cachix/devenv/v2.4.0";
     inlets.url = "github:welteki/inlets-nix";
   };
 

@@ -1,20 +1,21 @@
 { buildGoModule
+, go_1_27
 , fetchFromGitHub
 , ...
 }:
 
-buildGoModule rec {
+buildGoModule.override { go = go_1_27; } rec {
   pname = "kubetrim";
-  version = "v0.0.2";
+  version = "v0.0.3";
 
   src = fetchFromGitHub {
     owner = "alexellis";
     repo = "kubetrim";
     rev = "${version}";
-    sha256 = "sha256-XYsj4wbVNPfPht9Odqk2FjlhS2uJUQS7vLRUd5rAht4=";
+    sha256 = "sha256-uUSvLSk8GiR316CoSCY2eJo3gaa7TYhk/izHiqzLSRs=";
   };
 
-  vendorHash = "sha256-m9OuVFlD4F170Q6653HdvUhdULjR2cAttLsUN03XIXo=";
+  vendorHash = null;
 
   subPackages = [ "." ];
 }
