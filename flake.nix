@@ -5,14 +5,6 @@
     nixpkgs.url = "nixpkgs/nixos-26.05";
     flake-parts.url = "github:hercules-ci/flake-parts";
     devenv.url = "github:cachix/devenv/v2.1.2";
-    hunk = {
-      url = "github:modem-dev/hunk/v0.16.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    herdr = {
-      url = "github:ogulcancelik/herdr/v0.7.3";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     inlets.url = "github:welteki/inlets-nix";
   };
 
